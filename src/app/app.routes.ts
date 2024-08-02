@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import path from 'node:path';
 import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
 import { RegisterPageComponent } from './auth/pages/register-page/register-page.component';
 
@@ -27,21 +26,30 @@ export const routes: Routes = [{
     children: [
         {
             path: 'organized',
-            title: 'Organized Gifts/Events',
+            title: 'Organized',
             loadComponent: () => import('./dashboard/pages/organized-gifts/organized-gifts.component')
         },
         {
             path: 'collaborated',
-            title: 'Collaborated-in Gifts/Events',
+            title: 'Collaborated',
             loadComponent: () => import('./dashboard/pages/collaborated-in-gifts/collaborated-in-gifts.component')
         },
         {
             path: 'participated',
-            title: 'Participated-in Gifts/Events',
+            title: 'Participated',
             loadComponent: () => import('./dashboard/pages/participated-in-gifts/participated-in-gifts.component')
         },
+        {
+            path: '',
+            redirectTo: 'participated',
+            pathMatch: 'full',
+        }
     ] 
     
+    },{
+        path: '',
+        redirectTo: 'auth',
+        pathMatch: 'full',
     }
 
 
