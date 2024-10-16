@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '../../services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+
 
 @Component({
   standalone: true,
@@ -19,10 +22,12 @@ export class LoginPageComponent {
 
   private authService = inject( AuthService );
 
+  private router = inject( Router )
+
 
   public myForm: FormGroup = this.fb.group({
-    email: ['', [ Validators.required, Validators.email ]],
-    password: ['', [ Validators.required, Validators.minLength(6) ]]
+    email: ['meli@gmail.com', [ Validators.required, Validators.email ]],
+    password: ['123456', [ Validators.required, Validators.minLength(6) ]]
 
   });
 
@@ -33,9 +38,9 @@ export class LoginPageComponent {
     
     this.authService.login( email, password )
       .subscribe({
-        next: () => console.log('rtof'),
-        error: (error) => {
-          console.log({ loginError: error })
+        next: () => this.router.navigateByUrl( '/dashboard'),
+        error: (message) => {
+          Swal.fire('Error', message, 'error');
         }
         
       })
