@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { routes } from '../../app.routes';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   standalone: true,
   selector: 'app-sidemenu',
-  imports: [ RouterModule ],
+  imports: [ RouterModule,  ],
   templateUrl: './sidemenu.component.html',
   styleUrl: './sidemenu.component.css'
 })
@@ -20,7 +21,9 @@ export class SidemenuComponent {
   .filter( route => !route.path?.includes('**') );
   
 
+  private userService = inject( AuthService );
 
+  public user = computed( () => this.userService.currentUser());
 
   constructor() {
 
