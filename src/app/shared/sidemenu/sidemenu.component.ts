@@ -18,17 +18,23 @@ export class SidemenuComponent {
   .filter( route => route && route.path )
   .filter( route => !route.path?.includes( 'register' ) )
   .filter( route => !route.path?.includes('login') )
+  .filter( route => !route.path?.includes('profile') )
   .filter( route => !route.path?.includes('**') );
+
   
 
-  private userService = inject( AuthService );
+  private authService = inject( AuthService );
 
-  public user = computed( () => this.userService.currentUser());
+  public user = computed( () => this.authService.currentUser());
 
   constructor() {
 
 
 
+  }
+
+  onLogout(){
+    this.authService.logout();
   }
 
 
