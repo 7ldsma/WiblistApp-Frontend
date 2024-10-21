@@ -23,7 +23,7 @@
         @for (item of menuItems; track $index) {
     
             <a 
-            [routerLink]="item.path"
+            [routerLink]="['/dashboard','gifts', item.path]"
             routerLinkActive="bg-stone-50"
             href="#" class="w-full px-2 inline-flex space-x-2 items-center border-b border-stone-400 rounded-md py-3 hover:bg-stone-300 transition ease-linear duration-150">
                 <div>
