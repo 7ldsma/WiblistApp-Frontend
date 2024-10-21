@@ -108,7 +108,7 @@ export class AuthService {
   logout(){
     if(isPlatformBrowser(this.platformId)){
 
-      localStorage.removeItem(' token ');
+      localStorage.removeItem('token');
       this._currentUser.set(null);
       this._authStatus.set( AuthStatus.notAuthenticated )
 
