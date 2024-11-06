@@ -29,41 +29,34 @@ export const routes: Routes = [{
     loadComponent: () => import('./dashboard/layouts/dashboard-layout/dashboard-layout.component'),
     children: [
         {
-            path: 'gifts',
-            loadComponent: () => import('./dashboard/layouts/gift-layout/gift-layout.component'),
-            children: [
-                {
-                    path: 'organized',
-                    title: 'Organized',
-                    loadComponent: () => import('./dashboard/pages/organized-gifts/organized-gifts.component')
-                },
-                {
-                    path: 'collaborated',
-                    title: 'Collaborated',
-                    loadComponent: () => import('./dashboard/pages/collaborated-in-gifts/collaborated-in-gifts.component')
-                },
-                {
-                    path: 'participated',
-                    title: 'Participated',
-                    loadComponent: () => import('./dashboard/pages/participated-in-gifts/participated-in-gifts.component')
-                },
-
-            ]
+            path: 'gifts/organized',
+            title: 'Organized',
+            loadComponent: () => import('./dashboard/pages/organized-gifts/organized-gifts.component')
         },
-        
+        {
+            path: 'gifts/collaborated',
+            title: 'Collaborated',
+            loadComponent: () => import('./dashboard/pages/collaborated-in-gifts/collaborated-in-gifts.component')
+        },
+        {
+            path: 'gifts/participated',
+            title: 'Participated',
+            loadComponent: () => import('./dashboard/pages/participated-in-gifts/participated-in-gifts.component')
+        },
         {
             path: 'profile',
             title: 'Profile',
             loadComponent: () => import('./dashboard/pages/profile/profile.component')
         },
+        
         {
             path: '',
-            redirectTo: 'auth',
+            redirectTo: 'gifts/participated',
             pathMatch: 'full',
         }
-    ] 
-    
-    },
+        
+    ] },
+
     {
         path: '404',
         component: Error404PageComponent,
