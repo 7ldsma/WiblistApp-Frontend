@@ -12,23 +12,23 @@ import { AuthService } from '../../auth/services/auth.service';
 })
 export class SidemenuComponent {
 
-  public extractRoutes = routes
-  .flatMap(route => route.children ?? [])
-  .flatMap(route => route.children ?? [])
+  // public extractRoutes = routes
+  // .flatMap(route => route.children ?? [])
+  // .flatMap(route => route.children ?? [])
 
 
 
   public menuItems = routes
-  .flatMap(route => route.children ?? [])
-  .flatMap(route => route.children ?? [])
+  // .flatMap(route => route.children ?? [])
+  // .flatMap(route => route.children ?? [])
 
-  // .map( route => route.children ?? [] )
-  // .flat()
-  // .filter( route => route && route.path )
-  // .filter( route => !route.path?.includes( 'register' ) )
-  // .filter( route => !route.path?.includes('login') )
-  // .filter( route => !route.path?.includes('profile') )  
-  // .filter( route => !route.path?.includes('**') )
+  .map( route => route.children ?? [] )
+  .flat()
+  .filter( route => route && route.path )
+  .filter( route => !route.path?.includes( 'register' ) )
+  .filter( route => !route.path?.includes('login') )
+  .filter( route => !route.path?.includes('profile') )  
+  .filter( route => !route.path?.includes('**') )
 
 
   
@@ -38,7 +38,7 @@ export class SidemenuComponent {
   public user = computed( () => this.authService.currentUser());
 
   constructor() {
-    console.log(this.extractRoutes)
+    // console.log(this.extractRoutes)
 
 
   }
